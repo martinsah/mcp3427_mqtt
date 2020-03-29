@@ -1,4 +1,4 @@
-project(cmake_demo)
+project(mcp3427_mqtt)
 
 cmake_minimum_required(VERSION 3.13)
 
@@ -15,3 +15,6 @@ ADD_EXECUTABLE( mqtt_example mqtt_example.cpp )
 TARGET_LINK_LIBRARIES( mcp3427_test Boost::program_options Boost::chrono Boost::thread )
 TARGET_LINK_LIBRARIES( mcp3427_mqtt Boost::program_options Boost::chrono Boost::thread PahoMqttCpp::paho-mqttpp3 )
 TARGET_LINK_LIBRARIES( mqtt_example Boost::program_options Boost::chrono Boost::thread PahoMqttCpp::paho-mqttpp3 )
+
+install(TARGETS mcp3427_mqtt DESTINATION bin)
+
