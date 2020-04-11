@@ -32,7 +32,10 @@ class ptx_convert {
 	double operator()(double r){
 		using namespace std;
 		double c = (-R0 * A + sqrt(pow(R0,2) * pow(A,2) - 4 * R0 * B * (R0 - r)))/(2*R0*B);
-		return c;
+        if(usa)
+            return c*9.0/5.0 + 32.0;
+        else
+            return c;
 	}
 };
 
@@ -69,6 +72,7 @@ int main(int ac, char **av)
 		("verbose",	"report to stdout")
 		("pt100",	"treat ADC as PT100 readout")
 		("csv",	"csv readout to stdout")
+        ("usa",	"readout units in Fahrenheit")
 		("addr1",	po::value<int>()->default_value(0x68),"i2c address of ADC1")
 		("addr2",	po::value<int>()->default_value(0x6a),"i2c address of ADC2")
 	;
